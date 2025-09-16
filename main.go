@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 func main() {
+
 	c1 := InitCharacter(
 		"Veyra",
 		"Fairy",
