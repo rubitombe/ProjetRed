@@ -6,10 +6,10 @@ type character struct {
 	level              int
 	pointOfLifeMax     int
 	pointOfLifeCurrent int
-	inv                []object
+	inv                []string
 }
 
 func main() {
-	c1 := character{"Veyra", "Fairy", 0, 100, 50, []object{"Life's Potion", "Knife", "Death's Potion"}}
+	c1 := character{"Veyra", "Fairy", 0, 100, 50, []string{"Life's Potion", "Knife", "Death's Potion"}}
 	println(c1.name)
 }
