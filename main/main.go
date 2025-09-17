@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"ProjetRed"
+	"fmt"
+)
 
 func main() {
 

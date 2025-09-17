@@ -1,15 +1,26 @@
 package ProjetRed
 
-type object struct {
-	name     string
-	quantity int
+type Object struct {
+	Name     string
+	Quantity int
 }
 
-type character struct {
-	name               string
-	class              string
-	level              int
-	pointOfLifeMax     int
-	pointOfLifeCurrent int
-	inv                []string
+type Character struct {
+	Name               string
+	Class              string
+	Level              int
+	PointOfLifeMax     int
+	PointOfLifeCurrent int
+	Inv                []string
+}
+
+func InitCharacter(name string, class string, level int, pointOfLifeMax int, pointOfLifeCurrent int, inv []string) *Character {
+	return &Character{
+		Name:               name,
+		Class:              class,
+		Level:              level,
+		PointOfLifeMax:     pointOfLifeMax,
+		PointOfLifeCurrent: pointOfLifeCurrent,
+		Inv:                inv,
+	}
 }
