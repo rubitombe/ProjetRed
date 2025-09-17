@@ -15,6 +15,7 @@ type Character struct {
 }
 
 func InitCharacter(name string, class string, level int, pointOfLifeMax int, pointOfLifeCurrent int, inv []string) *Character {
+
 	return &Character{
 		Name:               name,
 		Class:              class,
