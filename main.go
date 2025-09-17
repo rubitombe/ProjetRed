@@ -1,7 +1,7 @@
 package main
 
 import (
-	"ProjetRed"
+	ProjetRed "ProjetRed/src"
 	"fmt"
 )
 
