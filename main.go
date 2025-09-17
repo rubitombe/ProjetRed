@@ -1,10 +1,13 @@
 package main
 
-import "fmt"
+import (
+	ProjetRed "ProjetRed/src"
+	"fmt"
+)
 
 func main() {
 
-	c1 := InitCharacter(
+	c1 := ProjetRed.InitCharacter(
 		"Veyra",
 		"Fairy",
 		0,
