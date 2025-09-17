@@ -14,7 +14,7 @@ type Item struct {
 
 var inventory = map[string]Item{
 	"Death's Potion": {Quantite: 1, Degats: 15, Durabilite: 100},
-	"Life's Potion ": {Quantite: 5, Effet: "soin", Valeur: 20},
+	"Life's Potion":  {Quantite: 5, Effet: "soin", Valeur: 20},
 	"Knife":          {Quantite: 1, Degats: 10, Durabilite: 80},
 }
 
@@ -37,4 +37,8 @@ func accessInventory(inv map[string]Item) {
 		}
 	}
 	fmt.Println()
+}
+
+func main() {
+	accessInventory(inventory)
 }
