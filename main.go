@@ -10,6 +10,6 @@ type character struct {
 }
 
 func main() {
-	c1 := character{"Veyra", "Fairy", 0, 100, 50, []string{"Life's Potion", "Knife", "Death's Potion"}}
+	c1 := character{"Veyra", "Fairy", 0, 100, 50, []string{"Life's Potion", "Knife", "Poison's Potion"}}
 	println(c1.name)
 }
