@@ -1,4 +1,4 @@
-package ProjetRed
+package main
 
 type Object struct {
 	Name     string

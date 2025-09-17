@@ -1,4 +1,4 @@
-package ProjetRed
+package main
 
 import (
 	"fmt"
@@ -12,13 +12,13 @@ type Item struct {
 	Valeur     int
 }
 
-var inventory = map[string]Item{
+var Inventory = map[string]Item{
 	"Death's Potion": {Quantite: 1, Degats: 15, Durabilite: 100},
-	"Life's Potion":  {Quantite: 5, Effet: "soin", Valeur: 20},
+	"Life's Potion":  {Quantite: 2, Effet: "soin", Valeur: 20},
 	"Knife":          {Quantite: 1, Degats: 10, Durabilite: 80},
 }
 
-func accessInventory(inv map[string]Item) {
+func AccessInventory(inv map[string]Item) {
 	fmt.Println("Inventaire du joueur")
 	for nom, item := range inv {
 		fmt.Printf("\nObjet : %s\n", nom)
@@ -37,4 +37,7 @@ func accessInventory(inv map[string]Item) {
 		}
 	}
 	fmt.Println()
+}
+func main() {
+	AccessInventory(Inventory)
 }
