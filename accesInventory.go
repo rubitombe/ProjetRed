@@ -1,4 +1,4 @@
-package main
+package ProjetRed
 
 import (
 	"fmt"
@@ -37,8 +37,4 @@ func accessInventory(inv map[string]Item) {
 		}
 	}
 	fmt.Println()
-}
-
-func main() {
-	accessInventory(inventory)
 }
