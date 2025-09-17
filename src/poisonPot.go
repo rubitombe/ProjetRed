@@ -1,8 +1,6 @@
 package ProjetRed
 
-import "time"
-
-time.Sleep(1 * time.Second)
+import "fmt"
 
 func poisonPot(c *Character, pot string) {
 
