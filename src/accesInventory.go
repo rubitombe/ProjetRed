@@ -38,6 +38,3 @@ func AccessInventory(inv map[string]Item) {
 	}
 	fmt.Println()
 }
-func main() {
-	AccessInventory(Inventory)
-}

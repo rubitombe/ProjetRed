@@ -37,7 +37,10 @@ func Menu(c1 *Character) {
 		case 2:
 			accessInventoryMenu()
 		case 3:
-			fmt.Println("Au revoir !")
+			merchant()
+
+		case 4:
+			fmt.Println("Au revoir")
 			return
 		default:
 			fmt.Println("Option invalide. Veuillez réessayer.")

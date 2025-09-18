@@ -12,6 +12,7 @@ type Character struct {
 	PointOfLifeMax     int
 	PointOfLifeCurrent int
 	Inv                []string
+	Money              string
 }
 
 func InitCharacter(name string, class string, level int, pointOfLifeMax int, pointOfLifeCurrent int, inv []string) *Character {

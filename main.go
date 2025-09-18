@@ -23,4 +23,5 @@ func main() {
 	fmt.Println("Inventaire :", c1.Inv)
 
 	ProjetRed.Menu(c1)
+
 }
