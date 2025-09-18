@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func takePot(c *Character, pot string) {
+func TakePot(c *Character, pot string) {
 
 	for i, item := range c.Inv {
 		if item == "Life's Potion" {

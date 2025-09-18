@@ -2,7 +2,7 @@ package ProjetRed
 
 import "fmt"
 
-func poisonPot(c *Character, pot string) {
+func PoisonPot(c *Character, pot string) {
 
 	for i, item := range c.Inv {
 		if item == "Poison's Potion" {
