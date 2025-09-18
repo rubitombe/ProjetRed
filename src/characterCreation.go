@@ -11,6 +11,10 @@ func CharacterCreation(name string) (*Character, bool) {
 		fmt.Println("Le nom ne doit pas être vide.")
 		return nil, false
 	}
+	if len(nameRunes) < 4 || len(nameRunes) > 15 {
+		fmt.Println("Le nom doit contenir entre 4 et 15 lettres")
+		return nil, false
+	}
 	if nameRunes[0] < 'A' || nameRunes[0] > 'Z' {
 		fmt.Println("Le nom doit commencer par une lettre majuscule.")
 		return nil, false

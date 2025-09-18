@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func isDead(c *Character) {
+func IsDead(c *Character) {
 
 	if c.PointOfLifeCurrent <= 0 {
 		fmt.Println("Vous êtes mort. Game Over.")
