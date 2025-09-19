@@ -33,7 +33,21 @@ func ShowInventory() {
 	}
 }
 
-func Merchant(player *Character, someInt *int) {
+func merchant(_ *Character, gold *int) {
+	items := map[int]struct {
+		Name  string
+		Price int
+	}{
+		1: {"Potion de vie", 0},
+		2: {"Potion de vie", 9},
+		3: {"Potion de mort", 12},
+		4: {"Livre de sort: Boule d'attieke", 31},
+		5: {"Peau de serpent", 11},
+		6: {"Fourrure ours polaire", 8},
+		7: {"Cuir de dragon", 7},
+		8: {"Plume de faucon", 5},
+	}
+
 	fmt.Println("=== Marchand : Jerry ===")
 	fmt.Println("Jerry : Bonjour aventurier ! Voici ce que je propose :")
 	fmt.Println("1. Potion de vie (gratuit)")
@@ -67,7 +81,9 @@ func mainMenu() {
 
 		switch choix {
 		case 1:
-			Merchant()
+			player := &Character{}
+			gold := 50
+			merchant(player, &gold)
 		case 2:
 			ShowInventory()
 		case 0:
