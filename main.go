@@ -21,6 +21,7 @@ func main() {
 
 	ProjetRed.Menu(c1)
 
+	fmt.Println("Sort :", c1.Spell)
 }
 
 // func main() {
