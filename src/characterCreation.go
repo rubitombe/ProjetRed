@@ -67,6 +67,7 @@ func CharacterCreation(name string) (*Character, bool) {
 		PointOfLifeMax:     maxLife,
 		PointOfLifeCurrent: maxLife / 2,
 		Inv:                []string{},
-		Spell:              "Coup de tête",
+		Spell:              []string{"Boule d'attieke", "Magic Locs", "Cataclysme"},
+		SpellEquipped:      "Coup de tête",
 	}, true
 }

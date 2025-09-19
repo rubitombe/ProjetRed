@@ -9,7 +9,7 @@ func accessInventoryMenu() {
 	fmt.Println("Inventaire :")
 	fmt.Println("Knife")
 	fmt.Println("Potion de vie")
-	fmt.Println(" Potion de mort ")
+	fmt.Println("Potion de mort ")
 }
 
 func Menu(c1 *Character) {
@@ -20,7 +20,8 @@ func Menu(c1 *Character) {
 		fmt.Println("\n=== MENU ===")
 		fmt.Println("1. Afficher les informations du personnage")
 		fmt.Println("2. Accéder à l'inventaire")
-		fmt.Println("3. Quitter")
+		fmt.Println("3. Accéder au marchand")
+		fmt.Println("4. Quitter")
 		fmt.Print("Choisissez une option : ")
 		_, err := fmt.Scan(&choix)
 		if err != nil {
@@ -37,8 +38,8 @@ func Menu(c1 *Character) {
 		case 2:
 			accessInventoryMenu()
 		case 3:
-			merchant()
-
+			var someInt int = 0
+			merchant(c1, &someInt)
 		case 4:
 			fmt.Println("Au revoir")
 			return
