@@ -12,19 +12,22 @@ type Character struct {
 	PointOfLifeMax     int
 	PointOfLifeCurrent int
 	Inv                []string
-	Money              string
+	Skills             []string
 	Spell              []string
 	SpellEquipped      string
 }
 
-func InitCharacter(name string, class string, level int, pointOfLifeMax int, pointOfLifeCurrent int, inv []string) *Character {
+func InitCharacter(name string, class string, level int, hpMax int, hpCurrent int, inv []string, Skills []string) *Character {
 
-	return &Character{
+	c := &Character{
 		Name:               name,
 		Class:              class,
 		Level:              level,
-		PointOfLifeMax:     pointOfLifeMax,
-		PointOfLifeCurrent: pointOfLifeCurrent,
+		PointOfLifeMax:     hpMax,
+		PointOfLifeCurrent: hpCurrent,
 		Inv:                inv,
 	}
+	c.Skills = append(c.Skills, "👊 Coup de poing")
+	return c
+
 }

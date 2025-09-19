@@ -37,4 +37,89 @@ func AccessInventory(inv map[string]Item) {
 		}
 	}
 	fmt.Println()
+
+}
+
+func checkInventory(inventory []string) bool {
+	if len(inventory) >= 10 {
+		fmt.Printf("⚠️ Inventaire plein (%d/10).\n", len(inventory))
+		return false
+	}
+	return true
+}
+
+func addInventory(item string, inventory *[]string) {
+	if len(*inventory) >= 10 {
+		return
+	}
+	*inventory = append(*inventory, item)
+	fmt.Printf("✅ Vous avez obtenu : %s\n", item)
+}
+
+func removeInventory(item string, inventory *[]string) {
+	for i, v := range *inventory {
+		if v == item {
+			*inventory = append((*inventory)[:i], (*inventory)[i+1:]...)
+			fmt.Printf("🗑️ %s retiré de l’inventaire.\n", item)
+			return
+		}
+	}
+	fmt.Println("❌ Item introuvable dans l’inventaire.")
+}
+
+func showInventory(inv map[string]Item, player *Character) {
+	fmt.Println("\n🎒 === Inventaire de", player.Name, "=== 🎒")
+	if len(inv) == 0 {
+		fmt.Println("Inventaire vide...")
+		return
+	}
+
+	i := 1
+	for nom := range inv {
+		fmt.Printf(" %d. %s\n", i, nom)
+		i++
+	}
+
+	var choix string
+	fmt.Println("\n👉 Quel objet voulez-vous utiliser ?")
+	fmt.Scan(&choix)
+
+	useItem(inv, choix, player)
+}
+
+func useItem(inv map[string]Item, itemName string, player *Character) {
+	item, exists := inv[itemName]
+	if !exists {
+		fmt.Println("❌ Item introuvable dans l’inventaire.")
+		return
+	}
+
+	switch itemName {
+	case "Life's Potion":
+		player.PointOfLifeCurrent += item.Valeur
+		if player.PointOfLifeCurrent > player.PointOfLifeMax {
+			player.PointOfLifeCurrent = player.PointOfLifeMax
+		}
+		fmt.Printf("🧪 Vous buvez %s. HP +%d !\n", itemName, item.Valeur)
+
+		if item.Quantite > 1 {
+			item.Quantite--
+			inv[itemName] = item
+		} else {
+			delete(inv, itemName)
+		}
+
+	case "📖 Livre de Sort : Boule de Feu":
+		fmt.Println("📖 Vous lisez le Livre de Sort...")
+		spellBook(player, "🔥 Boule de feu")
+		if item.Quantite > 1 {
+			item.Quantite--
+			inv[itemName] = item
+		} else {
+			delete(inv, itemName)
+		}
+
+	default:
+		fmt.Println("❌ Impossible d’utiliser cet objet.")
+	}
 }

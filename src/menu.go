@@ -12,7 +12,7 @@ func accessInventoryMenu() {
 	fmt.Println("Potion de mort ")
 }
 
-func Menu(c1 *Character) {
+func Menu(player *Character) {
 	var choix int
 
 	for {
@@ -34,12 +34,12 @@ func Menu(c1 *Character) {
 
 		switch choix {
 		case 1:
-			DisplayInfo(c1)
+			DisplayInfo(player)
 		case 2:
 			accessInventoryMenu()
 		case 3:
 			var someInt int = 0
-			merchant(c1, &someInt)
+			Merchant(player, &someInt)
 		case 4:
 			fmt.Println("Au revoir")
 			return

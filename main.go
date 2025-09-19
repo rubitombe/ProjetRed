@@ -5,6 +5,9 @@ import (
 	"fmt"
 )
 
+var player *ProjetRed.Character
+var inventory []string
+
 func main() {
 	fmt.Println("Bienvenue dans le jeu Projet Red!")
 	fmt.Println("Veuillez entrer le nom de votre personnage :")
@@ -19,7 +22,12 @@ func main() {
 	fmt.Println("Vie actuelle :", c1.PointOfLifeCurrent)
 	fmt.Println("Inventaire :", c1.Inv)
 
-	ProjetRed.Menu(c1)
+	fmt.Println("Nom :", player.Name)
+	fmt.Println("Classe :", player.Class)
+	fmt.Println("Niveau :", player.Level)
+	fmt.Println("Vie max :", player.PointOfLifeMax)
+	fmt.Println("Vie actuelle :", player.PointOfLifeCurrent)
+	fmt.Println("Inventaire :", player.Inv)
 
 	fmt.Println("Sort :", c1.Spell)
 }
