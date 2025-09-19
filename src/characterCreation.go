@@ -8,7 +8,6 @@ func CharacterCreation(name string) *Character {
 	var nameRunes []rune
 
 	for {
-
 		if name == "" {
 			fmt.Print("Veuillez entrer le nom de votre personnage : ")
 			fmt.Scanln(&name)
@@ -79,8 +78,8 @@ func CharacterCreation(name string) *Character {
 		class = "Loup"
 		maxLife = 120
 	default:
-		fmt.Println("Choix invalide, par défaut vous serez Fée.")
-		class = "Fée"
+		fmt.Println("Choix invalide, par défaut vous serez Humain.")
+		class = "Humain"
 		maxLife = 100
 	}
 

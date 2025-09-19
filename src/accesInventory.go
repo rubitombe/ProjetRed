@@ -40,7 +40,7 @@ func AccessInventory(inv map[string]Item) {
 
 }
 
-func checkInventory(inventory []string) bool {
+func CheckInventory(inventory []string) bool {
 	if len(inventory) >= 10 {
 		fmt.Printf("⚠️ Inventaire plein (%d/10).\n", len(inventory))
 		return false
@@ -48,7 +48,7 @@ func checkInventory(inventory []string) bool {
 	return true
 }
 
-func addInventory(item string, inventory *[]string) {
+func AddInventory(item string, inventory *[]string) {
 	if len(*inventory) >= 10 {
 		return
 	}
@@ -56,7 +56,7 @@ func addInventory(item string, inventory *[]string) {
 	fmt.Printf("✅ Vous avez obtenu : %s\n", item)
 }
 
-func removeInventory(item string, inventory *[]string) {
+func RemoveInventory(item string, inventory *[]string) {
 	for i, v := range *inventory {
 		if v == item {
 			*inventory = append((*inventory)[:i], (*inventory)[i+1:]...)
@@ -66,8 +66,7 @@ func removeInventory(item string, inventory *[]string) {
 	}
 	fmt.Println("❌ Item introuvable dans l’inventaire.")
 }
-
-func showInventory(inv map[string]Item, player *Character) {
+func ShowInventory(inv map[string]Item, player *Character) {
 	fmt.Println("\n🎒 === Inventaire de", player.Name, "=== 🎒")
 	if len(inv) == 0 {
 		fmt.Println("Inventaire vide...")
@@ -84,10 +83,9 @@ func showInventory(inv map[string]Item, player *Character) {
 	fmt.Println("\n👉 Quel objet voulez-vous utiliser ?")
 	fmt.Scan(&choix)
 
-	useItem(inv, choix, player)
 }
 
-func useItem(inv map[string]Item, itemName string, player *Character) {
+func UseItem(inv map[string]Item, itemName string, player *Character) {
 	item, exists := inv[itemName]
 	if !exists {
 		fmt.Println("❌ Item introuvable dans l’inventaire.")
@@ -111,7 +109,7 @@ func useItem(inv map[string]Item, itemName string, player *Character) {
 
 	case "📖 Livre de Sort : Boule de Feu":
 		fmt.Println("📖 Vous lisez le Livre de Sort...")
-		spellBook(player, "🔥 Boule de feu")
+		SpellBook(player, "🔥 Boule de feu")
 		if item.Quantite > 1 {
 			item.Quantite--
 			inv[itemName] = item

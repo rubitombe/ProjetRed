@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func showSkills(player *Character) {
+func ShowSkills(player *Character) {
 	fmt.Println("\n✨ === Grimoire de", player.Name, "=== ✨")
 	if len(player.Skills) == 0 {
 		fmt.Println("Aucune compétence connue.")
@@ -15,7 +15,7 @@ func showSkills(player *Character) {
 	}
 }
 
-func spellBook(player *Character, spell string) {
+func SpellBook(player *Character, spell string) {
 	for _, s := range player.Skills {
 		if s == spell {
 			fmt.Println("⚠️ Vous connaissez déjà ce sort :", spell)
