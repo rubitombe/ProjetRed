@@ -14,7 +14,7 @@ func main() {
 	var nameRunes string
 	fmt.Scanln(&nameRunes)
 
-	c1, _ := ProjetRed.CharacterCreation(nameRunes)
+	c1 := ProjetRed.CharacterCreation(nameRunes)
 	fmt.Println("Nom :", c1.Name)
 	fmt.Println("Classe :", c1.Class)
 	fmt.Println("Niveau :", c1.Level)

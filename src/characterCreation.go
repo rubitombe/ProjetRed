@@ -4,37 +4,60 @@ import (
 	"fmt"
 )
 
-func CharacterCreation(name string) (*Character, bool) {
+func CharacterCreation(name string) *Character {
+	var nameRunes []rune
 
-	nameRunes := []rune(name)
-	if len(nameRunes) == 0 {
-		fmt.Println("Le nom ne doit pas être vide.")
-		return nil, false
-	}
-	if len(nameRunes) < 4 || len(nameRunes) > 15 {
-		fmt.Println("Le nom doit contenir entre 4 et 15 lettres")
-		return nil, false
-	}
-	if nameRunes[0] < 'A' || nameRunes[0] > 'Z' {
-		fmt.Println("Le nom doit commencer par une lettre majuscule.")
-		return nil, false
-	}
-	if nameRunes[1] < 'a' || nameRunes[1] > 'z' {
-		fmt.Println("Le nom doit contenir des lettres minuscules après la première lettre.")
-		return nil, false
-	}
-	for _, c := range nameRunes {
-		if (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') {
-			fmt.Println("Le nom ne doit contenir que des lettres.")
-			return nil, false
+	for {
+
+		if name == "" {
+			fmt.Print("Veuillez entrer le nom de votre personnage : ")
+			fmt.Scanln(&name)
 		}
+
+		nameRunes = []rune(name)
+
+		if len(nameRunes) == 0 {
+			fmt.Println("Le nom ne doit pas être vide.")
+			name = ""
+			continue
+		}
+		if len(nameRunes) < 4 || len(nameRunes) > 15 {
+			fmt.Println("Le nom doit contenir entre 4 et 15 lettres.")
+			name = ""
+			continue
+		}
+		if nameRunes[0] < 'A' || nameRunes[0] > 'Z' {
+			fmt.Println("Le nom doit commencer par une lettre majuscule.")
+			name = ""
+			continue
+		}
+		if len(nameRunes) > 1 && (nameRunes[1] < 'a' || nameRunes[1] > 'z') {
+			fmt.Println("Le nom doit contenir des lettres minuscules après la première lettre.")
+			name = ""
+			continue
+		}
+		valid := true
+		for _, c := range nameRunes {
+			if (c < 'A' || c > 'Z') && (c < 'a' || c > 'z') {
+				fmt.Println("Le nom ne doit contenir que des lettres.")
+				valid = false
+				break
+			}
+		}
+		if !valid {
+			name = ""
+			continue
+		}
+
+		break
 	}
 
 	fmt.Println("Choisissez une classe :")
 	fmt.Println("1. Fée (100 PV)")
 	fmt.Println("2. Nain (70 PV)")
 	fmt.Println("3. Gobelin (80 PV)")
-	fmt.Println("4. Loup(120 PV)")
+	fmt.Println("4. Loup (120 PV)")
+
 	var choice int
 	fmt.Print("Votre choix : ")
 	fmt.Scanln(&choice)
@@ -56,10 +79,11 @@ func CharacterCreation(name string) (*Character, bool) {
 		class = "Loup"
 		maxLife = 120
 	default:
-		fmt.Println("Choix invalide, par défaut vous serez Humain.")
-		class = "Humain"
+		fmt.Println("Choix invalide, par défaut vous serez Fée.")
+		class = "Fée"
 		maxLife = 100
 	}
+
 	return &Character{
 		Name:               name,
 		Class:              class,
@@ -69,5 +93,5 @@ func CharacterCreation(name string) (*Character, bool) {
 		Inv:                []string{},
 		Spell:              []string{"Boule d'attieke", "Magic Locs", "Cataclysme"},
 		SpellEquipped:      "Coup de tête",
-	}, true
+	}
 }
