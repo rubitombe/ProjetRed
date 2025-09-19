@@ -24,7 +24,8 @@ func Menu(player *Character) {
 		fmt.Println("1. Afficher les informations du personnage")
 		fmt.Println("2. Accéder à l'inventaire")
 		fmt.Println("3. Accéder au marchand")
-		fmt.Println("4. Quitter")
+		fmt.Println("4. Acceder au forgeron")
+		fmt.Println("5. Quitter")
 		fmt.Print("Choisissez une option : ")
 		_, err := fmt.Scan(&choix)
 		if err != nil {
@@ -44,6 +45,9 @@ func Menu(player *Character) {
 			var someInt int = 0
 			Merchantm(player, &someInt)
 		case 4:
+			Forgeron
+			fmt.Println()
+		case 5:
 			fmt.Println("Au revoir et bonne continuation")
 			return
 		default:

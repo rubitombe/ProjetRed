@@ -15,6 +15,7 @@ type Character struct {
 	Skills             []string
 	Spell              []string
 	SpellEquipped      string
+	Gold               int
 }
 
 func InitCharacter(name string, class string, level int, hpMax int, hpCurrent int, inv []string, Skills []string) *Character {
@@ -26,6 +27,7 @@ func InitCharacter(name string, class string, level int, hpMax int, hpCurrent in
 		PointOfLifeMax:     hpMax,
 		PointOfLifeCurrent: hpCurrent,
 		Inv:                inv,
+		Gold:               100,
 	}
 	c.Skills = append(c.Skills, "👊 Coup de poing")
 	return c
