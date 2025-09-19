@@ -12,15 +12,15 @@ func accessInventoryMenu() {
 	fmt.Println(" Potion de mort ")
 }
 
-func Menu(c1 *Character) {
+func Menu(player *Character) {
 	var choix int
 
 	for {
 
 		fmt.Println("\n=== MENU ===")
-		fmt.Println("1. Afficher les informations du personnage")
-		fmt.Println("2. Accéder à l'inventaire")
-		fmt.Println("3. Quitter")
+		fmt.Println("1.  🏪 Afficher les informations du personnage")
+		fmt.Println("2.  🎒 Accéder à l'inventaire")
+		fmt.Println("3. 🚪 Quitter")
 		fmt.Print("Choisissez une option : ")
 		_, err := fmt.Scan(&choix)
 		if err != nil {
@@ -33,7 +33,7 @@ func Menu(c1 *Character) {
 
 		switch choix {
 		case 1:
-			DisplayInfo(c1)
+			DisplayInfo(player)
 		case 2:
 			accessInventoryMenu()
 		case 3:
