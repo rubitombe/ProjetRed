@@ -4,6 +4,8 @@ import (
 	"fmt"
 )
 
+const maxInventory = 10
+
 type Item struct {
 	Quantite   int
 	Degats     int
@@ -12,15 +14,15 @@ type Item struct {
 	Valeur     int
 }
 
-var Inventory = map[string]Item{
+var invt = map[string]Item{
 	"Death's Potion": {Quantite: 1, Degats: 15, Durabilite: 100},
 	"Life's Potion":  {Quantite: 2, Effet: "soin", Valeur: 20},
 	"Knife":          {Quantite: 1, Degats: 10, Durabilite: 80},
 }
 
-func AccessInventory(inv map[string]Item) {
+func AccessInventory(invt map[string]Item) {
 	fmt.Println("Inventaire du joueur")
-	for nom, item := range inv {
+	for nom, item := range invt {
 		fmt.Printf("\nObjet : %s\n", nom)
 		fmt.Printf("  Quantité   : %d\n", item.Quantite)
 		if item.Degats > 0 {
@@ -74,7 +76,7 @@ func ShowInventory(inv map[string]Item, player *Character) {
 	}
 
 	i := 1
-	for nom := range inv {
+	for nom := range invt {
 		fmt.Printf(" %d. %s\n", i, nom)
 		i++
 	}
@@ -119,5 +121,43 @@ func UseItem(inv map[string]Item, itemName string, player *Character) {
 
 	default:
 		fmt.Println("❌ Impossible d’utiliser cet objet.")
+	}
+}
+
+func Inventory() bool {
+	if len(inventory) >= 10 {
+		fmt.Printf("⚠️ Inventaire plein (%d/%d).\n", len(inventory), maxInventory)
+		return false
+	}
+	return true
+}
+
+func Addinventory(item string) {
+	if !Inventory() {
+		return
+	}
+	inventory = append(inventory, item)
+	fmt.Printf("✅ Vous avez obtenu : %s\n", item)
+}
+
+func Removeinventory(item string) {
+	for i, v := range inventory {
+		if v == item {
+			inventory = append(inventory[:i], inventory[i+1:]...)
+			fmt.Printf("🗑️ %s retiré de l’inventaire.\n", item)
+			return
+		}
+	}
+	fmt.Println("❌ Item introuvable dans l’inventaire.")
+}
+
+func Showinventory() {
+	fmt.Println("\n🎒 === Inventaire === 🎒")
+	if len(inventory) == 0 {
+		fmt.Println("Inventaire vide...")
+		return
+	}
+	for i, v := range inventory {
+		fmt.Printf(" %d. %s\n", i+1, v)
 	}
 }

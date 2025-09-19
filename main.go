@@ -12,6 +12,10 @@ func main() {
 	fmt.Scanln(&nameRunes)
 
 	c1 := ProjetRed.CharacterCreation(nameRunes)
+
+	ProjetRed.Menu(c1)
+	var someInt int
+	ProjetRed.Merchant(c1, &someInt)
 	fmt.Println("Nom :", c1.Name)
 	fmt.Println("Classe :", c1.Class)
 	fmt.Println("Niveau :", c1.Level)
