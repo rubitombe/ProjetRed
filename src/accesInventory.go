@@ -18,8 +18,8 @@ var Inventory = map[string]Item{
 	"Knife":          {Quantite: 1, Degats: 10, Durabilite: 80},
 }
 
-func AccessInventory(inv map[string]Item) {
-	fmt.Println("Inventaire du joueur")
+func AccessInventory(inv map[string]Item, player *Character) {
+	fmt.Println("=== Inventaire du joueur ===")
 	for nom, item := range inv {
 		fmt.Printf("\nObjet : %s\n", nom)
 		fmt.Printf("  Quantité   : %d\n", item.Quantite)
@@ -38,6 +38,16 @@ func AccessInventory(inv map[string]Item) {
 	}
 	fmt.Println()
 
+	// Demande au joueur quel item utiliser
+	fmt.Println("Quel objet voulez-vous utiliser ? (Tapez le nom exact ou '0' pour revenir)")
+	var choix string
+	fmt.Scan(&choix)
+
+	if choix == "0" {
+		return // retourne au menu principal
+	}
+
+	useItem(inv, choix, player) // ✅ Appelle la fonction useItem
 }
 
 func checkInventory(inventory []string) bool {
@@ -100,26 +110,20 @@ func useItem(inv map[string]Item, itemName string, player *Character) {
 		if player.PointOfLifeCurrent > player.PointOfLifeMax {
 			player.PointOfLifeCurrent = player.PointOfLifeMax
 		}
-		fmt.Printf("🧪 Vous buvez %s. HP +%d !\n", itemName, item.Valeur)
+		fmt.Printf("✅ Vous utilisez %s et récupérez %d points de vie.\n", itemName, item.Valeur)
 
-		if item.Quantite > 1 {
-			item.Quantite--
-			inv[itemName] = item
-		} else {
-			delete(inv, itemName)
-		}
-
-	case "📖 Livre de Sort : Boule de Feu":
-		fmt.Println("📖 Vous lisez le Livre de Sort...")
-		spellBook(player, "🔥 Boule de feu")
-		if item.Quantite > 1 {
-			item.Quantite--
-			inv[itemName] = item
-		} else {
-			delete(inv, itemName)
-		}
+	case "Livre de Sort : Boule de Feu":
+		spellBook(player, "Boule de Feu") // ✅ le sort est appris si pas déjà connu
 
 	default:
-		fmt.Println("❌ Impossible d’utiliser cet objet.")
+		fmt.Printf("Vous utilisez %s.\n", itemName)
+	}
+
+	// Diminue la quantité et supprime si zéro
+	item.Quantite--
+	if item.Quantite <= 0 {
+		delete(inv, itemName)
+	} else {
+		inv[itemName] = item
 	}
 }

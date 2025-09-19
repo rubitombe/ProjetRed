@@ -37,7 +37,8 @@ func Menu(player *Character) {
 		case 2:
 			accessInventoryMenu()
 		case 3:
-			merchant()
+			var someInt int = 0
+			Merchant(player, &someInt)
 
 		case 4:
 			fmt.Println("Au revoir")
