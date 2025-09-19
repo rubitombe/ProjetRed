@@ -18,6 +18,7 @@ func main() {
 	fmt.Println("Vie max :", c1.PointOfLifeMax)
 	fmt.Println("Vie actuelle :", c1.PointOfLifeCurrent)
 	fmt.Println("Inventaire :", c1.Inv)
+	fmt.Println("Sort :", c1.Spell)
 }
 
 // func main() {

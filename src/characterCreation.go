@@ -29,6 +29,44 @@ func CharacterCreation(name string) (*Character, bool) {
 			return nil, false
 		}
 	}
-	return &Character{Name: name}, true
 
+	fmt.Println("Choisissez une classe :")
+	fmt.Println("1. Fée (100 PV)")
+	fmt.Println("2. Nain (70 PV)")
+	fmt.Println("3. Gobelin (80 PV)")
+	fmt.Println("4. Loup(120 PV)")
+	var choice int
+	fmt.Print("Votre choix : ")
+	fmt.Scanln(&choice)
+
+	var class string
+	var maxLife int
+
+	switch choice {
+	case 1:
+		class = "Fée"
+		maxLife = 100
+	case 2:
+		class = "Nain"
+		maxLife = 70
+	case 3:
+		class = "Gobelin"
+		maxLife = 80
+	case 4:
+		class = "Loup"
+		maxLife = 120
+	default:
+		fmt.Println("Choix invalide, par défaut vous serez Humain.")
+		class = "Humain"
+		maxLife = 100
+	}
+	return &Character{
+		Name:               name,
+		Class:              class,
+		Level:              1,
+		PointOfLifeMax:     maxLife,
+		PointOfLifeCurrent: maxLife / 2,
+		Inv:                []string{},
+		Spell:              "Coup de tête",
+	}, true
 }
